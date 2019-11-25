@@ -40,16 +40,19 @@
 				<div class="form-group">
 					<form:label path="nom">Nom</form:label>
 					<form:input path="nom" cssClass="form-control" />
+					<form:errors path="nom" cssClass="alert alert-danger" element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="numeroTel">Numéro de téléphone</form:label>
 					<form:input path="numeroTel" cssClass="form-control" />
-					<form:errors path="numeroTel" cssClass="alert alert-danger" element="div"></form:errors>
+					<form:errors path="numeroTel" cssClass="alert alert-danger"
+						element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="numeroFax">Numéro de fax</form:label>
 					<form:input path="numeroFax" cssClass="form-control" />
-					<form:errors path="numeroFax" cssClass="alert alert-danger" element="div"></form:errors>
+					<form:errors path="numeroFax" cssClass="alert alert-danger"
+						element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="email">Email</form:label>
@@ -57,25 +60,31 @@
 				</div>
 				<div class="form-group">
 					<form:label path="adresse.adresse">Adresse</form:label>
-					<form:input path="adresse.adresse" type="number"
-						cssClass="form-control"></form:input>
+					<form:input path="adresse.adresse" cssClass="form-control"></form:input>
+					<form:errors path="adresse.adresse" cssClass="alert alert-danger"
+						element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="adresse.codePostal">Code postal</form:label>
 					<form:input path="adresse.codePostal" cssClass="form-control"></form:input>
+					<form:errors path="adresse.codePostal"
+						cssClass="alert alert-danger" element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="adresse.ville">Ville</form:label>
 					<form:input path="adresse.ville" cssClass="form-control"></form:input>
+					<form:errors path="adresse.ville" cssClass="alert alert-danger"
+						element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="adresse.pays">Pays</form:label>
 					<form:input path="adresse.pays" cssClass="form-control"></form:input>
 				</div>
 				<div class="form-group">
-							<form:label path="titre">Titre</form:label>
-							<form:select path="titre" itemLabel="label" items="${titres}" cssClass="form-control"/>
-						</div>
+					<form:label path="titre">Titre</form:label>
+					<form:select path="titre" itemLabel="label" items="${titres}"
+						cssClass="form-control" />
+				</div>
 				<c:choose>
 					<c:when test="${client.getClass().simpleName == 'ClientEI'}">
 						<div class="form-group">
