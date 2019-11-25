@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><spring:message code="personne.list.titre"></spring:message></title>
+<title>Liste des vols</title>
 <link rel="stylesheet"
 	href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
 <script
@@ -21,7 +21,7 @@
 	
 		<h1>Liste des vols</h1>
 		<div>
-			<a  class="btn btn-link" type="submit" >Ajouter vol</a> 
+			<a  href="addVol" class="btn btn-link" type="submit" >Ajouter vol</a> 
 		</div>
 		<table class="table">
 			<thead>
@@ -37,25 +37,19 @@
 
 				<c:forEach var="v" items="${vol}">
 					<tr>
-						<td>${v.id}</td>
-						<td>${p.civilite}</td>
-						<td>${p.prenom}</td>
-						<td>${p.nom}</td>
-						<td><fmt:formatDate value="${p.dtNaiss}" pattern="dd/MM/yyyy"/></td>
-						<td>${p.adresse.numero}&nbsp;${p.adresse.rue}</td>
-						<td>${p.adresse.codePostal}</td>
-						<td>${p.adresse.ville}</td>
-						<td>${p.salle.nom}</td>
-						<td><c:if test="${p.getClass().simpleName == 'Formateur'}">${p.anneeExperience}</c:if></td>
-						<td><c:if test="${p.getClass().simpleName == 'Stagiaire'}">${p.formation}</c:if></td>						
+						<td>${v.idVol}</td>
+						<td><fmt:formatDate value="${v.dateDepart}" pattern="dd/MM/yyyy"/></td>
+						<td><fmt:formatDate value="${v.heureDepart}" pattern="HH:mm" type="time"/></td>
+						<td><fmt:formatDate value="${v.dateArrivee}" pattern="dd/MM/yyyy"/></td>
+						<td><fmt:formatDate value="${v.heureArrivee}" pattern="HH:mm" type="time"/></td>
 						<c:url var="edit" value="edit">
-							<c:param name="id" value="${p.id}"></c:param>
+							<c:param name="id" value="${v.idVol}"></c:param>
 						</c:url>
-						<td><a href="${edit}" class="btn btn-primary"><spring:message code="bouton.edit"></spring:message></a></td>
+						<td><a href="${edit}" class="btn btn-primary">Editer</a></td>
 						<c:url var="delete" value="delete">
-							<c:param name="id" value="${p.id}"></c:param>
+							<c:param name="id" value="${v.idVol}"></c:param>
 						</c:url>
-						<td><a href="${delete}" class="btn btn-danger"><spring:message code="bouton.supprimer"></spring:message></a></td>
+						<td><a href="${delete}" class="btn btn-danger">Supprimer</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
