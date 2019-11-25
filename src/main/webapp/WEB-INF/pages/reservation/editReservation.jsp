@@ -25,8 +25,7 @@
 			<c:url var="action" value="saveReservation"></c:url>
 
 
-			<form:form action="${action}" method="post"
-				modelAttribute="reservation">
+				<form:form action="${action}" method="post" modelAttribute="reservation">
 				<form:hidden path="version" value="${reservation.version}" />
 
 				<div class="form-group">
@@ -51,7 +50,16 @@
 					<button type="submit" class="btn btn-outline-success">enregistrer</button>
 					<a href="list" class="btn btn-outline-danger">annuler</a>
 				</div>
-			</form:form>
+				
+				<div class="form-group">
+					<form:label path="passager.idPassager">passager:</form:label>
+					<form:select cssClass="form-control" path="passager.idPassager">
+						<form:option value="">pas de passager</form:option>
+						<form:options items="${passagers}" itemValue="idPassager" itemLabel="nomPassager" />
+					</form:select>
+				</div>
+			
+					</form:form>
 		</fieldset>
 	</div>
 </body>
