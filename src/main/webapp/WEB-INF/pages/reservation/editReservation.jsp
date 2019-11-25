@@ -59,6 +59,18 @@
 					</form:select>
 				</div>
 			
+			
+	<div class="form-group">
+					<form:label path="vols.idVol">Vol:</form:label>
+					<form:select cssClass="form-control" path="vols.idVol">
+						<form:option value="">pas de Vol</form:option>
+						<form:options items="${vols}" itemValue="idVol" itemLabel="idVol" />
+					</form:select>
+				</div>
+			
+			
+			
+			
 					</form:form>
 		</fieldset>
 	</div>

@@ -2,6 +2,8 @@ package reservationMvc.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import reservationSpring.model.Reservation;
-import reservationSpring.repository.ClientRepository;
 import reservationSpring.repository.PassagerRepository;
 import reservationSpring.repository.ReservationRepository;
 import reservationSpring.repository.VolRepository;
@@ -26,6 +27,8 @@ public class ReservationController {
 	private PassagerRepository passagerRepository;
 
 
+	@Autowired
+	private VolRepository  volRepository;
 
 	@Autowired
 	private ReservationRepository reservationRepository;
@@ -55,8 +58,9 @@ public class ReservationController {
 	
 	private String goEdit(Reservation reservation, Model model) {
 		model.addAttribute("passagers", passagerRepository.findAll());
-		model.addAttribute("reservation", reservation);
+		model.addAttribute("vols", volRepository.findAll());
 
+		model.addAttribute("reservation", reservation);
 		return "reservation/editReservation";
 	}
 
@@ -70,6 +74,10 @@ public class ReservationController {
 		return save(reservation,br, model);
 	}
 
+	
+	
+	
+	
 	private String save(Reservation reservation, BindingResult br, Model model) {
 		
 		if (br.hasErrors()) {
@@ -79,10 +87,12 @@ public class ReservationController {
 		if (reservation.getPassager() != null && reservation.getPassager().getIdPassager() == null) {
 			reservation.setPassager(null);
 		}
-
-		
+		if (reservation.getVols()!= null && reservation.getVols().getIdVol() == null) {
+			reservation.setVols(null);
+		}
 		reservationRepository.save(reservation);
 		return "redirect:/reservation/listReservation";
 		}
+
 
 }

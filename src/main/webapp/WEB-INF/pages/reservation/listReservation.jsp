@@ -31,6 +31,7 @@
 					<th>date</th>
 					<th>nomPassager</th>
 					<th>prenomPasager</th>
+					<th>id Vol </th>
 				
 					<th></th>
 					<th></th>
@@ -45,7 +46,7 @@
 								pattern="dd/MM/yyyy" /></td>
 						<td>${r.passager.nomPassager}</td>
 						<td>${r.passager.prenomPassager}</td>
-					
+						 <td>${r.vols.idVol}</td>
 
 
 						<c:url var="edit" value="edit">
