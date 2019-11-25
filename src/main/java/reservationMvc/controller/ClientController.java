@@ -2,9 +2,12 @@ package reservationMvc.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,27 +55,33 @@ public class ClientController {
 	private String goEdit(Client client, Model model) {
 		model.addAttribute("client", client);
 		model.addAttribute("titres", Titre.values());
+		model.addAttribute("reservations", client.getReservations());
 		return "client/edit";
 	}
 
-	private String saveClient(Client client, Model model) {
+	private String saveClient(Client client, BindingResult br, Model model) {
+		if (br.hasErrors()) {
+			return goEdit(client, model);
+		}
 		clientRepository.save(client);
 		return "redirect:/client/list";
 	}
 
 	@PostMapping("/saveClientEI")
-	public String saveClientEI(@ModelAttribute("client") ClientEI clientEI, Model model) {
-		return saveClient(clientEI, model);
+	public String saveClientEI(@Valid @ModelAttribute("client") ClientEI clientEI, BindingResult br, Model model) {
+		return saveClient(clientEI, br, model);
 	}
 
 	@PostMapping("/saveClientMoral")
-	public String saveClientMoral(@ModelAttribute("client") ClientMoral clientMoral, Model model) {
-		return saveClient(clientMoral, model);
+	public String saveClientMoral(@Valid @ModelAttribute("client") ClientMoral clientMoral, BindingResult br,
+			Model model) {
+		return saveClient(clientMoral, br, model);
 	}
 
 	@PostMapping("/saveClientPhysique")
-	public String saveClientPhysique(@ModelAttribute("client") ClientPhysique clientPhysique, Model model) {
-		return saveClient(clientPhysique, model);
+	public String saveClientPhysique(@Valid @ModelAttribute("client") ClientPhysique clientPhysique, BindingResult br,
+			Model model) {
+		return saveClient(clientPhysique, br, model);
 	}
 
 	@GetMapping("/addClientEI")
