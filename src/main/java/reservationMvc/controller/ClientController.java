@@ -42,7 +42,7 @@ public class ClientController {
 
 	@GetMapping("/edit")
 	public String edit(@RequestParam(name = "id", required = true) Long id, Model model) {
-		Optional<Client> opt = clientRepository.findById(id);
+		Optional<Client> opt = clientRepository.findByIdWithReservations(id);
 		Client c = null;
 		if (opt.isPresent()) {
 			c = opt.get();
@@ -64,6 +64,8 @@ public class ClientController {
 			return goEdit(client, model);
 		}
 		clientRepository.save(client);
+		model.addAttribute("client", client);
+		model.addAttribute("reservations", client.getReservations());
 		return "redirect:/client/list";
 	}
 
