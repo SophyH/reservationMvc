@@ -37,6 +37,7 @@
 					<th>Code postal</th>
 					<th>Ville</th>
 					<th>Pays</th>
+					<th>Réservations</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -54,6 +55,7 @@
 						<td>${c.adresse.codePostal}</td>
 						<td>${c.adresse.ville}</td>
 						<td>${c.adresse.pays}</td>
+						<td>${ }
 						<c:url var="edit" value="edit">
 							<c:param name="id" value="${c.id}"></c:param>
 						</c:url>

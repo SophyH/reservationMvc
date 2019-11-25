@@ -44,14 +44,16 @@
 				<div class="form-group">
 					<form:label path="numeroTel">Numéro de téléphone</form:label>
 					<form:input path="numeroTel" cssClass="form-control" />
+					<form:errors path="numeroTel" cssClass="alert alert-danger" element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="numeroFax">Numéro de fax</form:label>
 					<form:input path="numeroFax" cssClass="form-control" />
+					<form:errors path="numeroFax" cssClass="alert alert-danger" element="div"></form:errors>
 				</div>
 				<div class="form-group">
 					<form:label path="email">Email</form:label>
-					<form:input path="email" cssClass="form-control" />
+					<form:input path="email" type="email" cssClass="form-control" />
 				</div>
 				<div class="form-group">
 					<form:label path="adresse.adresse">Adresse</form:label>
@@ -94,7 +96,6 @@
 						</div>
 					</c:when>
 				</c:choose>
-
 
 				<div class="form-group">
 					<button type="submit" class="btn btn-outline-success">Enregistrer</button>
