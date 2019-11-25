@@ -18,69 +18,72 @@
 <body>
 	<div class="container">
 		<h1>Liste des clients</h1>
-		<table class="table">
-			<div>
-				<a href="addClientEI" class="btn btn-link">ajout client EI</a> <a
-					href="addClientMoral" class="btn btn-link">ajout client Moral</a> <a
-					href="addClientPhysique" class="btn btn-link">ajout client
-					Physique</a>
-			</div>
-			<thead>
-				<tr>
-					<th>Type</th>
-					<th>Id</th>
-					<th>Titre</th>
-					<th>Nom</th>
-					<th>Prénom</th>
-					<th>Siret</th>
-					<th>Téléphone</th>
-					<th>Fax</th>
-					<th>Email</th>
-					<th>Login</th>
-					<th>Mot de passe</th>
-					<th>Adresse</th>
-					<th>Code postal</th>
-					<th>Ville</th>
-					<th>Pays</th>
-					<th>Réservations</th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="c" items="${clients}">
+		<div class="table-responsive">
+			<table class="table">
+				<div>
+					<a href="addClientEI" class="btn btn-link">ajout client EI</a> <a
+						href="addClientMoral" class="btn btn-link">ajout client Moral</a>
+					<a href="addClientPhysique" class="btn btn-link">ajout client
+						Physique</a>
+				</div>
+				<thead>
 					<tr>
-						<td>${c.getClass().simpleName}</td>
-						<td>${c.id}</td>
-						<td>${c.titre}</td>
-						<td>${c.nom}</td>
-						<td></td>
-						<td></td>
-						<td>${c.numeroTel}</td>
-						<td>${c.numeroFax}</td>
-						<td>${c.email}</td>
-						<td>${c.login.login}</td>
-						<td>${c.login.motdepasse}</td>
-						<td>${c.adresse.adresse}</td>
-						<td>${c.adresse.codePostal}</td>
-						<td>${c.adresse.ville}</td>
-						<td>${c.adresse.pays}</td>
-						<td><select size="3" class="form-control"><c:forEach var="r"
-									items="${c.reservations}">
-									<option>${r.idReservation}</option>
-								</c:forEach></select></td>
-						<c:url var="edit" value="edit">
-							<c:param name="id" value="${c.id}"></c:param>
-						</c:url>
-						<c:url var="delete" value="delete">
-							<c:param name="id" value="${c.id}"></c:param>
-						</c:url>
-						<td><a href="${edit}" class="btn btn-outline-primary">editer</a></td>
-						<td><a href="${delete}" class="btn btn-outline-danger">supprimer</a></td>
+						<th>Type</th>
+						<th>Id</th>
+						<th>Titre</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Siret</th>
+						<th>Téléphone</th>
+						<th>Fax</th>
+						<th>Email</th>
+						<th>Login</th>
+						<th>Mot de passe</th>
+						<th>Adresse</th>
+						<th>Code postal</th>
+						<th>Ville</th>
+						<th>Pays</th>
+						<th>Réservations</th>
+						<th></th>
+						<th></th>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					<c:forEach var="c" items="${clients}">
+						<tr>
+							<td>${c.getClass().simpleName}</td>
+							<td>${c.id}</td>
+							<td>${c.titre}</td>
+							<td>${c.nom}</td>
+							<td><c:if test="${c.getClass().simpleName != 'ClientMoral'}">${c.prenom}</c:if>
+							</td>
+							<td><c:if test="${c.getClass().simpleName == 'ClientMoral'}">${c.siret}</c:if></td>
+							<td>${c.numeroTel}</td>
+							<td>${c.numeroFax}</td>
+							<td>${c.email}</td>
+							<td>${c.login.login}</td>
+							<td>${c.login.motdepasse}</td>
+							<td>${c.adresse.adresse}</td>
+							<td>${c.adresse.codePostal}</td>
+							<td>${c.adresse.ville}</td>
+							<td>${c.adresse.pays}</td>
+							<td><select size="3" class="form-control"><c:forEach
+										var="r" items="${c.reservations}">
+										<option>${r.idReservation}</option>
+									</c:forEach></select></td>
+							<c:url var="edit" value="edit">
+								<c:param name="id" value="${c.id}"></c:param>
+							</c:url>
+							<c:url var="delete" value="delete">
+								<c:param name="id" value="${c.id}"></c:param>
+							</c:url>
+							<td><a href="${edit}" class="btn btn-outline-primary">editer</a></td>
+							<td><a href="${delete}" class="btn btn-outline-danger">supprimer</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>
