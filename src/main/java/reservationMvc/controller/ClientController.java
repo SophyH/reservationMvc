@@ -30,7 +30,7 @@ public class ClientController {
 
 	@GetMapping("/list")
 	public String list(Model model) {
-		model.addAttribute("clients", clientRepository.findAll());
+		model.addAttribute("clients", clientRepository.findAllCustomWithReservations());
 		return "client/list";
 	}
 
