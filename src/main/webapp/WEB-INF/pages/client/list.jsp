@@ -29,10 +29,15 @@
 				<tr>
 					<th>Type</th>
 					<th>Id</th>
+					<th>Titre</th>
 					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Siret</th>
 					<th>Téléphone</th>
 					<th>Fax</th>
 					<th>Email</th>
+					<th>Login</th>
+					<th>Mot de passe</th>
 					<th>Adresse</th>
 					<th>Code postal</th>
 					<th>Ville</th>
@@ -47,15 +52,23 @@
 					<tr>
 						<td>${c.getClass().simpleName}</td>
 						<td>${c.id}</td>
+						<td>${c.titre}</td>
 						<td>${c.nom}</td>
+						<td></td>
+						<td></td>
 						<td>${c.numeroTel}</td>
 						<td>${c.numeroFax}</td>
 						<td>${c.email}</td>
+						<td>${c.login.login}</td>
+						<td>${c.login.motdepasse}</td>
 						<td>${c.adresse.adresse}</td>
 						<td>${c.adresse.codePostal}</td>
 						<td>${c.adresse.ville}</td>
 						<td>${c.adresse.pays}</td>
-						<td>${ }
+						<td><select size="3" class="form-control"><c:forEach var="r"
+									items="${c.reservations}">
+									<option>${r.idReservation}</option>
+								</c:forEach></select></td>
 						<c:url var="edit" value="edit">
 							<c:param name="id" value="${c.id}"></c:param>
 						</c:url>
