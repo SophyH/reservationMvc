@@ -43,6 +43,10 @@
 					<form:errors path="nom" cssClass="alert alert-danger" element="div"></form:errors>
 				</div>
 				<div class="form-group">
+					<form:label path="reservations">Réservations</form:label>
+					<form:select path="reservations" itemLabel="idReservation" items="${reservations}" cssClass="form-control" />
+				</div>
+				<div class="form-group">
 					<form:label path="numeroTel">Numéro de téléphone</form:label>
 					<form:input path="numeroTel" cssClass="form-control" />
 					<form:errors path="numeroTel" cssClass="alert alert-danger"
@@ -84,7 +88,7 @@
 					<form:label path="titre">Titre</form:label>
 					<form:select path="titre" itemLabel="label" items="${titres}"
 						cssClass="form-control" />
-				</div>
+				</div>	
 				<c:choose>
 					<c:when test="${client.getClass().simpleName == 'ClientEI'}">
 						<div class="form-group">

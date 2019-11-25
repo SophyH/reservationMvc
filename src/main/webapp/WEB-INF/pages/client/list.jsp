@@ -43,7 +43,6 @@
 						<th>Code postal</th>
 						<th>Ville</th>
 						<th>Pays</th>
-						<th>Réservations</th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -67,10 +66,6 @@
 							<td>${c.adresse.codePostal}</td>
 							<td>${c.adresse.ville}</td>
 							<td>${c.adresse.pays}</td>
-							<td><select size="3" class="form-control"><c:forEach
-										var="r" items="${c.reservations}">
-										<option>${r.idReservation}</option>
-									</c:forEach></select></td>
 							<c:url var="edit" value="edit">
 								<c:param name="id" value="${c.id}"></c:param>
 							</c:url>
